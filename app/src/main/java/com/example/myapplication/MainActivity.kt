@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
         supportActionBar?.hide()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
         val dotsIndicator = binding.dotsIndicator
         val continueButton = binding.buttonContinue
         val animDrawable = binding.root.background as AnimationDrawable
@@ -47,11 +46,18 @@ class MainActivity : AppCompatActivity() {
                     binding.root.setBackgroundResource(R.drawable.gradient_animation_first_screen_onboarding)
                     val animDrawable = binding.root.background as AnimationDrawable
                     addAnimation(animDrawable)
+                    if(continueButton.visibility == View.VISIBLE){
+                        continueButton.visibility = View.INVISIBLE
+                    }
+
                 }
                 if (position== 1){
                     binding.root.setBackgroundResource(R.drawable.gradient_animation_second_screen_onboarding)
                     val animDrawable = binding.root.background as AnimationDrawable
                     addAnimation(animDrawable)
+                    if(continueButton.visibility == View.VISIBLE){
+                        continueButton.visibility = View.INVISIBLE
+                    }
                 }
                 if (position== 2){
                     binding.root.setBackgroundResource(R.drawable.gradient_animation_third_screen_onboarding)
