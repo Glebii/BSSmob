@@ -80,6 +80,7 @@
             android:background="@drawable/edittext_shape"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/sign_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#120B0B0B"

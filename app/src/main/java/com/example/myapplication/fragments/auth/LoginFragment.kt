@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments.auth
 
+import Database.UserViewModel
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +13,10 @@ import com.example.myapplication.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
+
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var mUserViewModel: UserViewModel
+
 
 
     override fun onCreateView(
@@ -25,19 +25,28 @@ class LoginFragment : Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         val textView = binding.signUpText
+        val loginButton = binding.buttonLogIn
+        mUserViewModel = ViewModelProvider(this)[UserViewModel::class.java]
+        loginButton.setOnClickListener{openMarketFragment()}
         textView.setOnClickListener{openSignupFragment()}
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun loginUser(){
+        val email = binding.userEmail.text.toString()
+        val password = binding.userPassword.text.toString()
+
+
     }
     private fun openSignupFragment(){
         val navController = Navigation.findNavController(requireActivity(),R.id.host_fragment_activity_main)
 
         navController.navigate(R.id.action_loginFragment_to_registrationFragment)
     }
+    private fun openMarketFragment(){
+        val navController = Navigation.findNavController(requireActivity(),R.id.host_fragment_activity_main)
+        navController.navigate(R.id.action_loginFragment_to_navigation_pay)
+    }
+
 
 }

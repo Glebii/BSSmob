@@ -28,19 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_pay"
-        android:name="com.example.myapplication.MarketFragment"
+        android:name="com.example.myapplication.fragments.MarketFragment"
         android:label="fragment_market"
         tools:layout="@layout/fragment_market" />
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.example.myapplication.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
-    <fragment
-        android:id="@+id/navigation_history"
-        android:name="com.example.myapplication.HistoryFragment"
-        android:label="fragment_history"
-        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.myapplication.fragments.auth.LoginFragment"
@@ -55,6 +45,16 @@
             android:id="@+id/action_loginFragment_to_navigation_pay"
             app:destination="@id/navigation_pay" />
     </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.myapplication.fragments.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.fragments.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
 
 
 </navigation>

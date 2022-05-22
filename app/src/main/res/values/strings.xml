@@ -11,4 +11,5 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="invalid_creds">К сожалению , вы ввели не всю нужную нам информацию\nРасскажите нам о себе больше</string>
 </resources>

@@ -9,13 +9,13 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun registerUser(user: User)
 
-    @Query("SELECT * FROM users ORDER BY id ASC")
-    fun getAllUsers(): LiveData<List<User>>
 
     @Update
     fun updateUserInfo(user: User)
 
 
+//    @Query("SELECT * FROM users WHERE email LIKE :email AND password LIKE :password")
+//    suspend fun login(email : String , password : String)
 
 
 }

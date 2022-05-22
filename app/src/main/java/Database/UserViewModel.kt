@@ -12,16 +12,21 @@ import model.User
 
 class UserViewModel(application: Application):AndroidViewModel(application) {
 
-    private val readAllData:LiveData<List<User>>
+
     private val repository:UserRepository
     init {
         val userDao = AppDatabase.getDatabase(application).userDao()
         repository = UserRepository(userDao)
-        readAllData = repository.readAllData
+
     }
     fun addUser(user: User){
         viewModelScope.launch (Dispatchers.IO){
             repository.addUser(user)
         }
     }
+//    fun loginUser(email : String , password : String){
+//        viewModelScope.launch (Dispatchers.IO){
+//            repository.getLoginDetails(email , password)
+//        }
+//    }
 }
