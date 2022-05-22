@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+
+
 }
 
 android {
@@ -56,9 +59,19 @@ dependencies {
     //recyclerview
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     //(recyclerview) For control over item selection of both touch and mouse driven selection
-    implementation "androidx.recyclerview:recyclerview-selection:1.2.0-alpha01"
-
-
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Room
+    implementation "androidx.room:room-runtime:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation "androidx.room:room-ktx:2.4.2"
+    androidTestImplementation "androidx.room:room-testing:2.4.2"
+    // Kotlin components
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
 
 
 }

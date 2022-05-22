@@ -31,7 +31,7 @@ class ViewPagerOnBoardingAdapter(val context : Context) : PagerAdapter() {
     val supportPhrasesArray = arrayOf(
         "Лучший магазин со строительными материалами",
         "Мы обеспечим вас любыми необходимыми высококачественными строительными материалами по демократическим ценам",
-        "Но перед этим небольшая регистрация :)"
+        "Но перед этим небольшая проверка личности :)"
     )
     override fun getCount(): Int {
         return mainPhrasesArray.size

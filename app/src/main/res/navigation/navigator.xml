@@ -7,20 +7,25 @@
 
     <fragment
         android:id="@+id/boardFragment"
-        android:name="com.example.myapplication.BoardFragment"
+        android:name="com.example.myapplication.fragments.BoardFragment"
         android:label="BoardFragment"
         tools:layout="@layout/fragment_board">
+
         <action
-            android:id="@+id/action_boardFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment"
+            android:id="@+id/action_boardFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_up"
             app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="auth.RegistrationFragment"
+        android:name="com.example.myapplication.fragments.auth.SignUPFragment"
         android:label="RegistrationFragment"
-        tools:layout="@layout/fragment_registration"/>
+        tools:layout="@layout/fragment_registration">
+        <action
+            android:id="@+id/action_registrationFragment_to_navigation_pay"
+            app:destination="@id/navigation_pay" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_pay"
         android:name="com.example.myapplication.MarketFragment"
@@ -36,6 +41,20 @@
         android:name="com.example.myapplication.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication.fragments.auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_pay"
+            app:destination="@id/navigation_pay" />
+    </fragment>
 
 
 </navigation>
