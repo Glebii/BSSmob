@@ -1,81 +1,48 @@
 package com.example.myapplication
 
-import android.graphics.drawable.AnimationDrawable
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.RelativeLayout
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
-import on_boarding.ViewPagerOnBoardingAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var viewPagerAdapter: ViewPagerOnBoardingAdapter
-    private lateinit var viewPager: ViewPager
 
+
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
         supportActionBar?.hide()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        val dotsIndicator = binding.dotsIndicator
-        val continueButton = binding.buttonContinue
-        val animDrawable = binding.root.background as AnimationDrawable
-        addAnimation(animDrawable)
-        viewPager = binding.onboardingViewpager
-        viewPagerAdapter = ViewPagerOnBoardingAdapter(this)
-        viewPager.adapter =  viewPagerAdapter
-        dotsIndicator.setViewPager(viewPager)
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
+        val navView : BottomNavigationView = findViewById(R.id.nav_view)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        navView.setupWithNavController(navController)
+        val appBarConfiguration: AppBarConfiguration = AppBarConfiguration.Builder(
+            R.id.navigation_history, R.id.navigation_pay, R.id.navigation_profile
+        )
+            .build()
+        setupActionBarWithNavController(this, navController, appBarConfiguration)
+        setupWithNavController(navView, navController)
+        navController.addOnDestinationChangedListener{_,destination,_->
+            kotlin.run {
+                if (destination.id != R.id.navigation_pay && destination.id != R.id.navigation_history && destination.id != R.id.navigation_profile)
+                    navView.visibility = View.GONE
+                else navView.visibility = View.VISIBLE
             }
-
-            override fun onPageSelected(position: Int) {
-                if (position== 0){
-                    binding.root.setBackgroundResource(R.drawable.gradient_animation_first_screen_onboarding)
-                    val animDrawable = binding.root.background as AnimationDrawable
-                    addAnimation(animDrawable)
-                    if(continueButton.visibility == View.VISIBLE){
-                        continueButton.visibility = View.INVISIBLE
-                    }
-
-                }
-                if (position== 1){
-                    binding.root.setBackgroundResource(R.drawable.gradient_animation_second_screen_onboarding)
-                    val animDrawable = binding.root.background as AnimationDrawable
-                    addAnimation(animDrawable)
-                    if(continueButton.visibility == View.VISIBLE){
-                        continueButton.visibility = View.INVISIBLE
-                    }
-                }
-                if (position== 2){
-                    binding.root.setBackgroundResource(R.drawable.gradient_animation_third_screen_onboarding)
-                    val animDrawable = binding.root.background as AnimationDrawable
-                    addAnimation(animDrawable)
-                    continueButton.visibility = View.VISIBLE
-                }
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-
-        })
+        }
     }
-    fun addAnimation(animationDrawable: AnimationDrawable){
-        animationDrawable.setExitFadeDuration(5)
-        animationDrawable.setExitFadeDuration(3000)
-        animationDrawable.start()
-    }
+
 }

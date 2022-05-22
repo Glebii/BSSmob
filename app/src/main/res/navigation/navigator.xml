@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigator"
+    app:startDestination="@id/boardFragment">
+
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="com.example.myapplication.BoardFragment"
+        android:label="BoardFragment"
+        tools:layout="@layout/fragment_board">
+        <action
+            android:id="@+id/action_boardFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment"
+            app:enterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="auth.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration"/>
+    <fragment
+        android:id="@+id/navigation_pay"
+        android:name="com.example.myapplication.MarketFragment"
+        android:label="fragment_market"
+        tools:layout="@layout/fragment_market" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.example.myapplication.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+
+
+</navigation>
